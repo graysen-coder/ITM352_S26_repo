@@ -1,3 +1,3 @@
-# hello-world
-This repository is for practicing the GitHub Flow.
-I'm practicing committing changes to a repository.
+# ITM352_S26_repo
+This repository is for my ITM 352 class assignments and labs.
+I'm practicing using GitHub.
