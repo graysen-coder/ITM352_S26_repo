@@ -9,7 +9,7 @@ def greet(name):
        the day of the week.
     """
     message = "Hello" + " " + name + "! "
-    x = datetime.date()
+    x = datetime.datetime.now()
     day_of_week = x.strftime("%A")
     message += "Happy" + day_of_week + "!"
     return message
