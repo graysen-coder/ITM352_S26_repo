@@ -1,24 +1,13 @@
 trip_duration = [1.1, 0.8, 2.5, 2.6]
 trip_fare = (6.25, 5.25, 10.50, 8.05)
 
-#Create a list of dictionaries where each dictionary represents a trip
-trips_list = [
-    {"duration":1.1, "fare":6.25},
-    {"duration":0.8, "fare":5.25},
-    {"duration":2.5, "fare":10.50},
-    {"duration":2.6, "fare":8.05}
-]
+# Normalize fares to numbers (handles strings or numeric types)
+normalized_fares = [float(f) for f in trip_fare]
 
-#trips = dict(zip(trip_duration, trip_fare))
-#print(trips)
-#trip_num = input("What trip do you want")
+# Build a list of dictionaries from the two sequences
+trips_list = [{"duration": d, "fare": f} for d, f in zip(trip_duration, normalized_fares)]
 
-trip_num = input("Enter trip number (1-4): ")
-trip_index = int(trip_num) - 1
-
-print(f"Duration: {trips_list[trip_index]['duration']} miles")
-print(f"Fare: ${trips_list[trip_index]['fare']:.2f}")
-
-#trip_index = int(trip_num) - 1
-#print(f"Duration: {list(trips.keys())[trip_index]} miles")
-#print(f"Fare: ${list(trips.values())[trip_index]:.2f}")
+# Print duration and cost of the 3rd trip (index 2)
+third_trip = trips_list[2]
+print(f"Duration: {third_trip['duration']} miles")
+print(f"Fare: ${third_trip['fare']:.2f}")
