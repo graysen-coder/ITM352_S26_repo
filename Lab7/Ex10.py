@@ -1,5 +1,5 @@
-for num in range(1,12):
-    if num == 5:
+for num in range(1,10):
+    if num == 8:
         print("Stopping")
         break
     if num != 5:

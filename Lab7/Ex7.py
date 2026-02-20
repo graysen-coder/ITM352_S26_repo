@@ -1,4 +1,4 @@
-data = ("hello", 10, "goodbye", 20, "python", 30, True)
+data = ("hello", 10, "goodbye", 3, "goodnight", 5)
 
 string_count = 0
 

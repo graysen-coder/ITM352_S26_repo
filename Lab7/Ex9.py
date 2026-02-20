@@ -12,3 +12,6 @@ ages_list = [age for age in age]
 celebs_dict = {"celebrities":celebs_list, "ages":ages_list}
 
 print(celebs_dict)
+
+#do the above without loops
+celebs_dict = {"celebrities": list(celebs), "ages": list(age)}
