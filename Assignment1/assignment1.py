@@ -2,6 +2,8 @@
 #Name: Graysen Oumi
 #Date: February 27, 2026
 
+#This is a quiz game that asks the user a series of questions
+
 #Extra requirements
 #7. Add explanations for why the correct answer is the correct answer.
 #1. Write the history of scores out to a file.  
