@@ -53,7 +53,7 @@ class quiz_question:
 
         #Keep prompting the user for input until they enter a valid letter corresponding to one of the options
 
-        while(not answer.isascii() or answer not in ascii_lowercase[:len(self.optionsList)]):
+        while(len(answer) == 0 or not answer.isascii() or answer not in ascii_lowercase[:len(self.optionsList)]):
 
             if self.hint:
                 print("Please enter a letter corresponding to one of the options. Type 'hint' for a hint.\n")
@@ -83,34 +83,6 @@ class quiz_question:
             return False
         
 
-#take look at this later, need to fix
-def get_questions():
-    #This function gets the questions for the quiz from a file called questions.txt and returns a list of quiz_question objects
-
-    questions = []
-
-    with open("questions.txt", "r") as questions_file:
-
-        for line in questions_file:
-
-            question_data = line.strip().split(";")
-
-            if len(question_data) >= 4:
-
-                question = question_data[0]
-
-                options_list = question_data[1].split(",")
-
-                correct_answer = question_data[2]
-
-                explanation = question_data[3]
-
-                hint = question_data[4] if len(question_data) > 4 else None
-
-                questions.append(quiz_question(question, options_list, correct_answer, explanation, hint))
-
-    return questions
-
 #This is the actual quiz game implementation
 
 #Create a list of quiz_question objects to represent the questions in the quiz
@@ -129,19 +101,19 @@ for question in questions:
 
     print("____________________________________________________________")
 
-    if question.ask_question():
+    if question.ask_question() == True:
 
         num_correct += 1
 
 #At the end of the quiz, print the user's score and append it to the file storing score history (requirement 1)
 print(f"You got {num_correct} out of {len(questions)} correct.")
 
+print(f"Your score has been recorded in score_history.txt. Press A to return to menu or B to play again.")
+
 with open("score_history.txt", "a") as score_history_file:
 
     score_history_file.write(f"Score: {num_correct}/{len(questions)}\n")
 
 
+score_history_file.close()
 
-    
-
-    
