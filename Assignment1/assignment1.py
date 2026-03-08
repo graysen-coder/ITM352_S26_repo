@@ -30,8 +30,11 @@ class quiz_question:
         self.hint = hint
 
     #This method prints the question then a numbered list of the options and asks user for an answer
+
     #It then checks if the answer is correct and prints the explanation for the correct answer (requirement 7)
+
     #If the user is incorrect, the method returns prints the correct answer and explanation and returns false
+
     def ask_question(self):
 
         print(f"{self.question}")
@@ -44,12 +47,12 @@ class quiz_question:
         if self.hint:
             print("Type 'hint' for a hint.")
 
-        answer = input("Choice? ")
+        answer = input("Choice? ").lower()
 
-        if self.hint and answer.lower() == "hint":
+        if self.hint and answer.lower == "hint":
             print(f"Hint: {self.hint}")
 
-            answer = input("Choice? ")
+            answer = input("Choice? ").lower()
 
         #Keep prompting the user for input until they enter a valid letter corresponding to one of the options
 
@@ -61,7 +64,7 @@ class quiz_question:
             else:
                 print("Invalid input. Please enter a letter corresponding to one of the options.\n")
 
-            answer = input("Choice? ")
+            answer = input("Choice? ").lower()
 
             if self.hint and answer.lower() == "hint":
                 print(f"Hint: {self.hint}")
@@ -83,36 +86,89 @@ class quiz_question:
             return False
         
 
-#This is the actual quiz game implementation
+#This is the actual quiz game implementation, writing the program here so it can read the questions from a file and create a list of questions to ask
 
-#Create a list of quiz_question objects to represent the questions in the quiz
-questions = [
-        quiz_question("What is the airspeed of an unladen swallow in miles/hr", ["12", "8", "11", "15"], "12", "The airspeed of an unladen European swallow is approximately 12 miles per hour.", "a"),
-        quiz_question("What is the capital of Texas?", ["Austin", "San Antonio", "Dallas", "Waco"], "Austin", "Austin is the capital city of Texas."),
-        quiz_question("The Last Supper was painted by which artist?", ["Da Vinci", "Rembrandt", "Picasso", "Michelangelo"], "Da Vinci", "The Last Supper was painted by Leonardo da Vinci."),
-    ]
+with open("questions.txt", "r") as question_file:
 
-num_correct = 0
+    #Create a list of quiz_question objects to represent the questions in the quiz
 
-#Loop through each question and ask it to the user, keeping track of how many they get correct
-print(f"Welcome to the quiz! There are {len(questions)} questions. Please answer the following questions:")
+    questions = []
 
-for question in questions:
+    for line in question_file:
 
-    print("____________________________________________________________")
+        parts = line.strip().split("|")
 
-    if question.ask_question() == True:
+        #I used copilot to help generate this file parsing code to get the questions and the parts to put into the quiz_question objects
 
-        num_correct += 1
+        #This checks if the line has 5 parts (meaning it has a hint) or 4 parts meaning it has no hint and create the quiz question going from there
 
-#At the end of the quiz, print the user's score and append it to the file storing score history (requirement 1)
-print(f"You got {num_correct} out of {len(questions)} correct.")
+        if len(parts) == 5:
+            question_text, options_str, correct_answer, explanation, hint = parts
 
-print(f"Your score has been recorded in score_history.txt. Press A to return to menu or B to play again.")
+            #need to convert the options into a list of strings by splitting on the commas and then create the quiz_question object and append it to the list of questions
+            #This list comprehension takes each option in the string and strips any leading or trailing whitespace and creates a list of options to pass to the quiz_question constructor
+            options = [opt.strip() for opt in options_str.split(",")]
 
-with open("score_history.txt", "a") as score_history_file:
+            #This appends it to the questions list
+            questions.append(quiz_question(question_text, options, correct_answer.strip(), explanation, hint))
 
-    score_history_file.write(f"Score: {num_correct}/{len(questions)}\n")
+        elif len(parts) == 4:
+
+            question_text, options_str, correct_answer, explanation = parts
+
+            options = [opt.strip() for opt in options_str.split(",")]
+
+            questions.append(quiz_question(question_text, options, correct_answer.strip(), explanation, None))
+
+#Using this variable to track if the user wants to quit at the end
+play_again = 1
+
+#Quiz starts here
+while(play_again == 1):
+
+
+    num_correct = 0
+
+    #Loop through each question and ask it to the user, keeping track of how many they get correct
+    print(f"Welcome to the quiz! There are {len(questions)} questions. Please answer the following questions:")
+
+    for question in questions:
+
+        print("____________________________________________________________")
+
+        if question.ask_question() == True:
+
+            num_correct += 1
+
+    #At the end of the quiz, print the user's score and append it to the file storing score history (requirement 1)
+    print(f"You got {num_correct} out of {len(questions)} correct.")
+
+    exit_or_play_again = 0
+
+    while(exit_or_play_again == 0):
+
+        print("Type A to exit or B to play again.")
+
+        choice = input("Choice? ").lower()
+
+        if choice == "a":
+            exit_or_play_again = 1
+            play_again = 0
+
+        elif choice == "b":
+
+            exit_or_play_again = 2
+
+        else:
+
+            print("Invalid input. Please enter A to exit or B to play again.\n")
+
+    #Append users score to the file every time they play
+    with open("score_history.txt", "a") as score_history_file:
+
+        score_history_file.write(f"Score: {num_correct}/{len(questions)}\n")
+
+
 
 
 score_history_file.close()

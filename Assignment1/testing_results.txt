@@ -1,0 +1,205 @@
+PS C:\Users\gojir\Documents\GitHub\ITM352_S26_repo> cd .\Assignment1\
+PS C:\Users\gojir\Documents\GitHub\ITM352_S26_repo\Assignment1> cat .\questions.txt    
+Who won gold for Women's Singles figure skating at the 2026 Winter Olympics? | Kaori Sakamoto, Alysa Liu, Ami Nakai, Mone Chiba | Alysa Liu | She scored a total of 226.79 points compared to silver medalist score of 224.90 points | She is an American skater
+Where was the first Olympic Games held? | Athens, Paris, Rome, London | Athens | The first modern Olympic Games were held in Athens, Greece in 1896 | Somewhere in Greece
+How often are the Olympic Games held? | Every 2 years, Every 3 years, Every 4 years, Every 5 years | Every 4 years | The Olympics are traditionally held every four years, a schedule that dates back to ancient Greece when the games were also held at four-year intervals in honor of Zeus. | Not 2 or 3 years
+What do the 5 Olympic rings represent? | The 5 original sports, The 5 continents of the world, The 5 founding countries, The 5 Olympic values | The 5 continents of the world | The five rings symbolize the five inhabited continents (Africa, the Americas, Asia, Europe, and Oceania) and represent the coming together of athletes from around the world in friendly competition.
+Which country has hosted the most Olympic games? | France, United States, United Kingdom, Germany | United States | The United States has hosted the Olympics more times than any other country (8 times)
+PS C:\Users\gojir\Documents\GitHub\ITM352_S26_repo\Assignment1> python .\assignment1.py
+Welcome to the quiz! There are 5 questions. Please answer the following questions:
+____________________________________________________________
+Who won gold for Women's Singles figure skating at the 2026 Winter Olympics?
+  a. Kaori Sakamoto
+  b. Alysa Liu
+  c. Ami Nakai
+  d. Mone Chiba
+Type 'hint' for a hint.
+Choice? 1
+Please enter a letter corresponding to one of the options. Type 'hint' for a hint.
+
+Choice?
+Please enter a letter corresponding to one of the options. Type 'hint' for a hint.
+
+Choice? hint
+Hint:  She is an American skater
+Please enter a letter corresponding to one of the options. Type 'hint' for a hint.
+
+Choice? A   
+The answer is 'Alysa Liu'. Not 'Kaori Sakamoto'.
+Explanation:  She scored a total of 226.79 points compared to silver medalist score of 224.90 points
+____________________________________________________________
+Where was the first Olympic Games held?
+  a. Athens
+  b. Paris
+  c. Rome
+  d. London
+Type 'hint' for a hint.
+Choice? e
+Please enter a letter corresponding to one of the options. Type 'hint' for a hint.
+
+Choice? HINT
+Hint:  Somewhere in Greece
+Please enter a letter corresponding to one of the options. Type 'hint' for a hint.
+
+Choice? b
+The answer is 'Athens'. Not 'Paris'.
+Explanation:  The first modern Olympic Games were held in Athens, Greece in 1896
+____________________________________________________________
+How often are the Olympic Games held?
+  a. Every 2 years
+  b. Every 3 years
+  c. Every 4 years
+  d. Every 5 years
+Type 'hint' for a hint.
+Choice? b
+The answer is 'Every 4 years'. Not 'Every 3 years'.
+Explanation:  The Olympics are traditionally held every four years, a schedule that dates back to ancient Greece when the games were also held at four-year intervals in honor of Zeus.
+____________________________________________________________
+What do the 5 Olympic rings represent?
+  a. The 5 original sports
+  b. The 5 continents of the world
+  c. The 5 founding countries
+  d. The 5 Olympic values
+Choice? B
+Correct!
+Explanation:  The five rings symbolize the five inhabited continents (Africa, the Americas, Asia, Europe, and Oceania) and represent the coming together of athletes from around the world in friendly competition.
+
+____________________________________________________________
+Which country has hosted the most Olympic games?
+  a. France
+  b. United States
+  c. United Kingdom
+  d. Germany
+Choice? bb
+Invalid input. Please enter a letter corresponding to one of the options.
+
+Choice? B
+Correct!
+Explanation:  The United States has hosted the Olympics more times than any other country (8 times)
+
+You got 2 out of 5 correct.
+Type A to exit or B to play again.
+Choice? asdf 
+Invalid input. Please enter A to exit or B to play again.
+
+Type A to exit or B to play again.
+Choice?
+Invalid input. Please enter A to exit or B to play again.
+
+Type A to exit or B to play again.
+Choice? b
+Welcome to the quiz! There are 5 questions. Please answer the following questions:
+____________________________________________________________
+Who won gold for Women's Singles figure skating at the 2026 Winter Olympics?
+  a. Kaori Sakamoto
+  b. Alysa Liu
+  c. Ami Nakai
+  d. Mone Chiba
+Type 'hint' for a hint.
+Choice? b
+Correct!
+Explanation:  She scored a total of 226.79 points compared to silver medalist score of 224.90 points
+
+____________________________________________________________
+Where was the first Olympic Games held?
+  a. Athens
+  b. Paris
+  c. Rome
+  d. London
+Type 'hint' for a hint.
+Choice? a
+Correct!
+Explanation:  The first modern Olympic Games were held in Athens, Greece in 1896
+
+____________________________________________________________
+How often are the Olympic Games held?
+  a. Every 2 years
+  b. Every 3 years
+  c. Every 4 years
+  d. Every 5 years
+Type 'hint' for a hint.
+Choice? c
+Correct!
+Explanation:  The Olympics are traditionally held every four years, a schedule that dates back to ancient Greece when the games were also held at four-year intervals in honor of Zeus.
+
+____________________________________________________________
+What do the 5 Olympic rings represent?
+  a. The 5 original sports
+  b. The 5 continents of the world
+  c. The 5 founding countries
+  d. The 5 Olympic values
+Choice? b
+Correct!
+Explanation:  The five rings symbolize the five inhabited continents (Africa, the Americas, Asia, Europe, and Oceania) and represent the coming together of athletes from around the world in friendly competition.
+
+____________________________________________________________
+Which country has hosted the most Olympic games?
+  a. France
+  b. United States
+  c. United Kingdom
+  d. Germany
+Choice? b
+Correct!
+Explanation:  The United States has hosted the Olympics more times than any other country (8 times)
+
+You got 5 out of 5 correct.
+Type A to exit or B to play again.
+Choice? b
+Welcome to the quiz! There are 5 questions. Please answer the following questions:
+____________________________________________________________
+Who won gold for Women's Singles figure skating at the 2026 Winter Olympics?
+  a. Kaori Sakamoto
+  b. Alysa Liu
+  c. Ami Nakai
+  d. Mone Chiba
+Type 'hint' for a hint.
+Choice? a
+The answer is 'Alysa Liu'. Not 'Kaori Sakamoto'.
+Explanation:  She scored a total of 226.79 points compared to silver medalist score of 224.90 points
+____________________________________________________________
+Where was the first Olympic Games held?
+  a. Athens
+  b. Paris
+  c. Rome
+  d. London
+Type 'hint' for a hint.
+Choice? b
+The answer is 'Athens'. Not 'Paris'.
+Explanation:  The first modern Olympic Games were held in Athens, Greece in 1896
+____________________________________________________________
+How often are the Olympic Games held?
+  a. Every 2 years
+  b. Every 3 years
+  c. Every 4 years
+  d. Every 5 years
+Type 'hint' for a hint.
+Choice? c
+Correct!
+Explanation:  The Olympics are traditionally held every four years, a schedule that dates back to ancient Greece when the games were also held at four-year intervals in honor of Zeus.
+
+____________________________________________________________
+What do the 5 Olympic rings represent?
+  a. The 5 original sports
+  b. The 5 continents of the world
+  c. The 5 founding countries
+  d. The 5 Olympic values
+Choice? a
+The answer is 'The 5 continents of the world'. Not 'The 5 original sports'.
+Explanation:  The five rings symbolize the five inhabited continents (Africa, the Americas, Asia, Europe, and Oceania) and represent the coming together of athletes from around the world in friendly competition.
+____________________________________________________________
+Which country has hosted the most Olympic games?
+  a. France
+  b. United States
+  c. United Kingdom
+  d. Germany
+Choice? b
+Correct!
+Explanation:  The United States has hosted the Olympics more times than any other country (8 times)
+
+You got 2 out of 5 correct.
+Type A to exit or B to play again.
+Choice? a
+PS C:\Users\gojir\Documents\GitHub\ITM352_S26_repo\Assignment1> cat .\score_history.txt
+Score: 2/5
+Score: 5/5
+Score: 2/5
