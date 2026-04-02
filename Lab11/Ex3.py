@@ -23,10 +23,11 @@ df['sales'] = df['quantity'] * df['unit_price']  # Calculate sales as quantity m
 state_col = 'customer_state' 
  
 pivot_table = pd.pivot_table(df,
-                             index='sales_region',
+                             index='customer_state',
                              values='sales',
-                             columns=['order_type', state_col],
+                             columns=["customer_type",'order_type'],
                              aggfunc=[np.sum, np.mean],
                              margins=True,
-                             margins_name='Total Sales')
+                             margins_name='Total Sales',
+                             fill_value=0)
 print(pivot_table)
