@@ -18,6 +18,7 @@ def load_csv(filepath):
         print(f"CSV file loaded successfully in {load_time:.2f} seconds.")
         print(f"Number of rows: {len(df)}")
         print(f"Number of columns: {len(df.columns)}")
+        print(f"Missing ")
 
         required_columns = ['quantity', 'unit_price', 'order_date']
         missing_columns = [col for col in required_columns if col not in df.columns]
