@@ -1,0 +1,688 @@
+PS C:\Users\Graysen\Documents\GitHub\ITM352_S26_repo> cd Assignment2
+PS C:\Users\Graysen\Documents\GitHub\ITM352_S26_repo\Assignment2> python dashboard.py
+Loading data from: https://drive.google.com/uc?id=1ujY0WCcePdotG2xdbLyeECFW9lCJ4t-K
+CSV file loaded successfully in 2.11 seconds.
+Number of rows: 5130
+Columns: ['order_number', 'employee_id', 'employee_name', 'job_title', 'sales_region', 'order_date', 'order_type', 'customer_type', 'customer_name', 'customer_state', 'product_category', 'product_number', 'produce_name', 'quantity', 'unit_price']
+All required columns are present.
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): a
+Invalid input. Please enter a number corresponding to the menu options.
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 12
+Invalid choice. Please select a valid option.
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 1
+Enter rows to display: 
+  Enter a number 1 to 5130 to display that many rows
+- Enter 'all' to display all rows
+- to skip preview, press Enter
+Your choice: 12
+Displaying first 12 rows:
+    order_number  employee_id    employee_name               job_title  \
+0        1102935    900019019  Alexandra Kundt  Senior Sales Associate
+1        1102976    900019019  Alexandra Kundt  Senior Sales Associate
+2        1102988    900019019  Alexandra Kundt  Senior Sales Associate
+3        1103012    900019019  Alexandra Kundt  Senior Sales Associate
+4        1103031    900019019  Alexandra Kundt  Senior Sales Associate
+5        1103106    900019019  Alexandra Kundt  Senior Sales Associate
+6        1103113    900019019  Alexandra Kundt  Senior Sales Associate
+7        1103172    900019019  Alexandra Kundt  Senior Sales Associate
+8        1103175    900019019  Alexandra Kundt  Senior Sales Associate
+9        1103240    900019019  Alexandra Kundt  Senior Sales Associate
+10       1103282    900019019  Alexandra Kundt  Senior Sales Associate
+11       1103312    900019019  Alexandra Kundt  Senior Sales Associate
+
+      sales_region order_date order_type customer_type       customer_name  \
+0   S Central East        NaT     Retail    Individual      Skipton Fealty
+1   S Central East        NaT     Retail    Individual     Lanni D'Ambrogi
+2   S Central East        NaT     Retail    Individual             Far Pow
+3   S Central East        NaT  Wholesale      Business           Swift Inc
+4   S Central East        NaT     Retail    Individual  Carmine Priestnall
+5   S Central East        NaT     Retail    Individual         Tann Angear
+6   S Central East        NaT  Wholesale      Business         Hilll Group
+7   S Central East        NaT     Retail    Individual         Devlin Nock
+8   S Central East        NaT     Retail    Individual   Jerrilyn Doubrava
+9   S Central East        NaT     Retail    Individual      Skipton Fealty
+10  S Central East        NaT     Retail    Individual         Devlin Nock
+11  S Central East        NaT     Retail    Individual   Granny Matevosian
+
+   customer_state product_category product_number  \
+0        Arkansas        Olive Oil          OO206
+1        Missouri      Gift Basket          GB301
+2     Mississippi        Olive Oil          OO302
+3           Texas        Olive Oil          OO125
+4           Texas        Olive Oil          OO128
+5        Oklahoma    Bath products          BP502
+6           Texas        Olive Oil          OO206
+7           Texas        Olive Oil          OO204
+8        Missouri        Olive Oil          OO307
+9        Arkansas        Olive Oil          OO207
+10          Texas    Bath products          BP105
+11       Missouri    Bath products          BP303
+
+                            produce_name  quantity  unit_price   sales
+0       Chili Extra Virgin Olive Oil 2pk         3       45.00  135.00
+1   Scented Olive Oil Candle Gift Basket         1       19.50   19.50
+2           Chili Extra Virgin Olive Oil         4       26.00  104.00
+3     Garlic Extra Virgin Olive Oil 12pk         4      234.00  936.00
+4      Chili Extra Virgin Olive Oil 12pk         3      234.00  702.00
+5           Vanilla and Olive Oil Candle         2        6.99   13.98
+6       Chili Extra Virgin Olive Oil 2pk         5       45.00  225.00
+7       Lemon Extra Virgin Olive Oil 2pk         4       45.00  180.00
+8        Rosemary Extra Virgin Olive Oil         3       26.00   78.00
+9       Basil Extra Virgin Olive Oil 2pk         2       45.00   90.00
+10         Lavender and Olive Oil Lotion         4        9.99   39.96
+11       Mandarin and Olive Oil Bar Soap         1        5.99    5.99
+
+
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 1
+Enter rows to display: 
+  Enter a number 1 to 5130 to display that many rows
+- Enter 'all' to display all rows
+- to skip preview, press Enter
+Your choice:
+Skipping preview.
+
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 2
+
+Number of employees by region:
+                Number of Employees
+sales_region
+Central East                      6
+N Central East                    6
+N Central West                    1
+Northeast                         4
+Northwest                         4
+S Central East                    6
+S Central West                    5
+Southeast                         6
+Southwest                         6
+
+Would you like to export the results to an Excel file?
+1. Yes
+2. No
+Enter your choice: 1
+Enter the filename (without extension): test
+Pivot table exported to test.csv
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 3
+C:\Users\Graysen\Documents\GitHub\ITM352_S26_repo\Assignment2\dashboard.py:162: FutureWarning: The provided callable <function mean at 0x0000020379AB13A0> is currently using DataFrameGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+  pivot_table = pd.pivot_table(dataframe, values='sales', index='sales_region', aggfunc=np.mean)
+
+Average sales by region:
+                Average Sales
+sales_region
+Central East       361.192826
+N Central East     324.396767
+N Central West     167.684571
+Northeast          350.169387
+Northwest          294.807565
+S Central East     360.986238
+S Central West     319.434532
+Southeast          322.571643
+Southwest          310.151464
+
+Would you like to export the results to an Excel file?
+1. Yes
+2. No
+Enter your choice: 2
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 4
+C:\Users\Graysen\Documents\GitHub\ITM352_S26_repo\Assignment2\dashboard.py:174: FutureWarning: The provided callable <function sum at 0x0000020379AAC430> is currently using DataFrameGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "sum" instead.
+  pivot_table = pd.pivot_table(dataframe, values='sales', index=['customer_state', 'customer_type', 'order_type'], aggfunc=np.sum)
+
+Sales by customer type and order type by state:
+                                         Total Sales
+customer_state customer_type order_type
+Alabama        Business      Retail          1088.00
+                             Wholesale       8389.99
+               Individual    Retail         14434.00
+Alaska         Business      Retail           886.00
+                             Wholesale       2399.50
+...                                              ...
+West Virginia  Business      Wholesale      12402.00
+               Individual    Retail          5410.47
+Wisconsin      Business      Wholesale      22595.43
+               Individual    Retail          7356.31
+Wyoming        Individual    Retail            73.47
+
+[114 rows x 1 columns]
+
+Would you like to export the results to an Excel file?
+1. Yes
+2. No
+Enter your choice: n
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 5
+C:\Users\Graysen\Documents\GitHub\ITM352_S26_repo\Assignment2\dashboard.py:186: FutureWarning: The provided callable <function sum at 0x0000020379AAC430> is currently using DataFrameGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "sum" instead.
+  pivot_table = pd.pivot_table(dataframe, values='sales', index=['sales_region', 'product_category'], aggfunc=np.sum)
+
+Total sales quantity and price by region and product:
+                                 Total Sales
+sales_region   product_category
+Central East   Bath products         5315.40
+               Gift Basket          16309.50
+               Olive Oil           230126.50
+N Central East Bath products         6905.36
+               Gift Basket          21533.00
+               Olive Oil           241459.75
+N Central West Bath products          690.92
+               Gift Basket           2023.50
+               Olive Oil             9023.50
+Northeast      Bath products         4267.56
+               Gift Basket          16985.00
+               Olive Oil           190249.75
+Northwest      Bath products         1909.24
+               Gift Basket           6115.00
+               Olive Oil            59781.50
+S Central East Bath products         7458.55
+               Gift Basket          25524.50
+               Olive Oil           306705.00
+S Central West Bath products         2250.08
+               Gift Basket           9118.00
+               Olive Oil            94364.75
+Southeast      Bath products         5101.97
+               Gift Basket          18900.50
+               Olive Oil           199862.25
+Southwest      Bath products         5897.97
+               Gift Basket          19232.00
+               Olive Oil           201590.75
+
+Would you like to export the results to an Excel file?
+1. Yes
+2. No
+Enter your choice: 1
+Enter the filename (without extension): test2
+Pivot table exported to test2.csv
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 6
+C:\Users\Graysen\Documents\GitHub\ITM352_S26_repo\Assignment2\dashboard.py:198: FutureWarning: The provided callable <function sum at 0x0000020379AAC430> is currently using DataFrameGroupBy.sum. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "sum" instead.
+  pivot_table = pd.pivot_table(dataframe, values='sales', index='customer_type', aggfunc=np.sum)
+
+Total sales quantity and price by customer type:
+               Total Sales
+customer_type
+Business        1002082.22
+Individual       706619.58
+
+Would you like to export the results to an Excel file?
+1. Yes
+2. No
+Enter your choice: 2
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 7
+C:\Users\Graysen\Documents\GitHub\ITM352_S26_repo\Assignment2\dashboard.py:210: FutureWarning: The provided callable <function max at 0x0000020379AACA60> is currently using DataFrameGroupBy.max. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "max" instead.
+  pivot_table = pd.pivot_table(dataframe, values='sales', index='product_category', aggfunc=[np.max, np.min])
+C:\Users\Graysen\Documents\GitHub\ITM352_S26_repo\Assignment2\dashboard.py:210: FutureWarning: The provided callable <function min at 0x0000020379AACB80> is currently using DataFrameGroupBy.min. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "min" instead.
+  pivot_table = pd.pivot_table(dataframe, values='sales', index='product_category', aggfunc=[np.max, np.min])
+
+Max and min sales price of sales by category:
+                  Max Sales  Min Sales
+product_category
+Bath products         300.0       5.99
+Gift Basket          1150.0      19.50
+Olive Oil            3276.0      16.75
+
+Would you like to export the results to an Excel file?
+1. Yes
+2. No
+Enter your choice: 2
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 8
+
+Number of unique employees by region:
+                Unique Employees
+sales_region
+S Central East                 6
+Central East                   6
+Northeast                      4
+Northwest                      4
+N Central East                 6
+Southwest                      6
+Southeast                      6
+S Central West                 5
+N Central West                 1
+
+Would you like to export the results to an Excel file?
+1. Yes
+2. No
+Enter your choice: 2
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 9
+Creating custom pivot table
+
+Available rows:
+1. employee_name
+2. sales_region
+3. product_category
+Enter the number(s) of your choice(s) for rows, separated by commas: 4
+Invalid row selection. Please enter valid numbers (1-3) separated by commas.
+Enter the number(s) of your choice(s) for rows, separated by commas: a
+Invalid row selection. Please enter valid numbers (1-3) separated by commas.
+Enter the number(s) of your choice(s) for rows, separated by commas: 1,2,3
+
+Available columns: (optional)
+1. customer_type
+2. order_type
+Enter the number(s) of your choice(s) for columns, separated by commas (enter for no grouping): 2
+
+Available values:
+1. quantity
+2. sales_price
+Enter the number(s) of your choice(s) for values, separated by commas:
+Invalid value selection. Please enter valid numbers (1-2) separated by commas.
+Enter the number(s) of your choice(s) for values, separated by commas: 2
+
+Available aggregation functions:
+1. sum
+2. mean
+3. count
+Enter the number(s) of your choice(s) for aggregation functions, separated by commas: 2
+Error creating pivot table: 'sales_price'
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 9
+Creating custom pivot table
+
+Available rows:
+1. employee_name
+2. sales_region
+3. product_category
+Enter the number(s) of your choice(s) for rows, separated by commas: 1
+
+Available columns: (optional)
+1. customer_type
+2. order_type
+Enter the number(s) of your choice(s) for columns, separated by commas (enter for no grouping): 1
+
+Available values:
+1. quantity
+2. sales_price
+Enter the number(s) of your choice(s) for values, separated by commas: 1
+
+Available aggregation functions:
+1. sum
+2. mean
+3. count
+Enter the number(s) of your choice(s) for aggregation functions, separated by commas: 1
+
+Custom Pivot Table:
+                   quantity
+customer_type      Business Individual
+employee_name
+Alexandra Kundt         123        272
+Alisha Hendricks        114        203
+Alyssa Smoak            261        459
+Ava Orosco               99        146
+Becky Seneschal         128        297
+Brenda Albury           296        197
+Christen Barrett        154        294
+Christy Beedom          134        280
+Clement Carry           109        181
+Colby Hallberg          246        390
+Constantine Acosta       32        132
+Cynthia Cash            147        322
+Dana Fizzer              86        217
+Daniel Burgess          214        283
+Delaney Marschke        104        161
+Dolly Trowel             89        172
+Dru Clingman            180        333
+Eddie Harrower           60        116
+Edward Loveless          22        154
+Georgia Eddowes         146        253
+Hannah Rosenstock       129        301
+Henry Rodriguez         145        280
+Igor Hansen             203        239
+John Ashwin             149        250
+Kendra Barnbrook        214        287
+Kristen Phillips         90        169
+Lauren Skip             134        306
+Lisa Frere              197        398
+Logan Augur              61        107
+Lorrie Ellison          120        259
+Marla Phifer            122        222
+Michelle Tiffany         71        241
+Mitch White             152        235
+Morten Shivers            6        103
+Nick Chen               233        361
+Norm Hawkins            140        300
+Paul Massimo            288        368
+Shantel Francis         166        309
+Sharla Sobie             98        235
+Tanya Tibbets            61        121
+Tricia Beaudry           78         79
+Vincent Kobak            62        131
+Winifred Fetterman       45        244
+Wynona Smith            174        234
+
+Would you like to export the results to an Excel file?
+1. Yes
+2. No
+Enter your choice: 2
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 9
+Creating custom pivot table
+
+Available rows:
+1. employee_name
+2. sales_region
+3. product_category
+Enter the number(s) of your choice(s) for rows, separated by commas: 1,2
+
+Available columns: (optional)
+1. customer_type
+2. order_type
+Enter the number(s) of your choice(s) for columns, separated by commas (enter for no grouping):  
+
+Available values:
+1. quantity
+2. sales_price
+Enter the number(s) of your choice(s) for values, separated by commas: 1
+
+Available aggregation functions:
+1. sum
+2. mean
+3. count
+Enter the number(s) of your choice(s) for aggregation functions, separated by commas: 2
+
+Custom Pivot Table:
+                                   quantity
+employee_name      sales_region
+Alexandra Kundt    S Central East  3.185484
+Alisha Hendricks   Central East    3.372340
+Alyssa Smoak       Northeast       3.257919
+Ava Orosco         Northwest       3.356164
+Becky Seneschal    N Central East  3.346457
+Brenda Albury      Central East    3.975806
+Christen Barrett   S Central East  3.318519
+Christy Beedom     Southwest       3.021898
+Clement Carry      Southeast       3.333333
+Colby Hallberg     N Central East  3.533333
+Constantine Acosta Northwest       2.779661
+Cynthia Cash       Southeast       3.105960
+Dana Fizzer        Southwest       3.189474
+Daniel Burgess     Central East    3.575540
+Delaney Marschke   S Central West  3.117647
+Dolly Trowel       S Central West  3.000000
+Dru Clingman       S Central East  3.375000
+Eddie Harrower     S Central West  3.087719
+Edward Loveless    N Central West  2.514286
+Georgia Eddowes    Southeast       3.439655
+Hannah Rosenstock  Southwest       3.115942
+Henry Rodriguez    Southwest       3.171642
+Igor Hansen        N Central East  3.348485
+John Ashwin        Central East    3.192000
+Kendra Barnbrook   S Central East  3.131250
+Kristen Phillips   Southeast       3.237500
+Lauren Skip        N Central East  2.972973
+Lisa Frere         N Central East  3.251366
+Logan Augur        S Central West  2.800000
+Lorrie Ellison     Southwest       3.158333
+Marla Phifer       Southwest       3.214953
+Michelle Tiffany   Central East    2.971429
+Mitch White        Southeast       3.583333
+Morten Shivers     S Central West  2.595238
+Nick Chen          S Central East  3.375000
+Norm Hawkins       Southeast       2.894737
+Paul Massimo       S Central East  3.381443
+Shantel Francis    Northeast       3.231293
+Sharla Sobie       Northeast       3.055046
+Tanya Tibbets      Northwest       3.250000
+Tricia Beaudry     Northwest       3.738095
+Vincent Kobak      N Central East  3.112903
+Winifred Fetterman Central East    2.627273
+Wynona Smith       Northeast       3.212598
+
+Would you like to export the results to an Excel file?
+1. Yes
+2. No
+Enter your choice: 1
+Enter the filename (without extension): test3 
+Pivot table exported to test3.csv
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 10
+
+Sales by Region and Product:
+                                 quantity      sales  quantity_%  sales_%
+sales_region   product_category
+Central East   Bath products          543    5315.40        3.29     0.31
+               Gift Basket            267   16309.50        1.62     0.95
+               Olive Oil             1497  230126.50        9.06    13.47
+N Central East Bath products          721    6905.36        4.36     0.40
+               Gift Basket            362   21533.00        2.19     1.26
+               Olive Oil             1648  241459.75        9.97    14.13
+N Central West Bath products           63     690.92        0.38     0.04
+               Gift Basket             26    2023.50        0.16     0.12
+               Olive Oil               87    9023.50        0.53     0.53
+Northeast      Bath products          423    4267.56        2.56     0.25
+               Gift Basket            254   16985.00        1.54     0.99
+               Olive Oil             1259  190249.75        7.62    11.13
+Northwest      Bath products          207    1909.24        1.25     0.11
+               Gift Basket            111    6115.00        0.67     0.36
+               Olive Oil              430   59781.50        2.60     3.50
+S Central East Bath products          717    7458.55        4.34     0.44
+               Gift Basket            445   25524.50        2.69     1.49
+               Olive Oil             1945  306705.00       11.77    17.95
+S Central West Bath products          223    2250.08        1.35     0.13
+               Gift Basket            133    9118.00        0.80     0.53
+               Olive Oil              623   94364.75        3.77     5.52
+Southeast      Bath products          492    5101.97        2.98     0.30
+               Gift Basket            302   18900.50        1.83     1.11
+               Olive Oil             1450  199862.25        8.78    11.70
+Southwest      Bath products          587    5897.97        3.55     0.35
+               Gift Basket            325   19232.00        1.97     1.13
+               Olive Oil             1383  201590.75        8.37    11.80
+
+____Sales Data Dashboard____
+Available options:
+1. Show the first n rows of the data
+2. Show the number of employees by region
+3. Average sales by region with average sales by state and sale type
+4. Sales by customer type and order type by state
+5. Total sales quantity and price by region and product
+6. Total sales quantity and price by customer type
+7. Max and min sales price of sales by category
+8. Number of unique employees by region
+9. Create a custom pivot table
+10. Show sales by region and product with percentage of total sales and quantity
+11. Exit
+Select an option (1-11): 11
+Exiting the program. Goodbye!
+PS C:\Users\Graysen\Documents\GitHub\ITM352_S26_repo\Assignment2> 
