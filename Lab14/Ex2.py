@@ -1,26 +1,17 @@
+#Create a histogram from the trip miles data found in the file “Trips from area 8.json”.    
+#Use trip miles as the X axis and frequency as the Y axis.
+import json
 import matplotlib.pyplot as plt
 
-# First dataset
-x_values = [1, 2, 3, 4, 5]
-y_values = [1, 2, 3, 4, 5]
+with open("Trips from area 8.json") as f:
+    data = json.load(f)
 
-# Plot the first dataset as a line graph
-plt.plot(x_values, y_values, label='Line 1', marker='o')
+trip_miles = [trip["trip_miles"] for trip in data]
 
-# Plot the same data as a scatter plot
-plt.scatter(x_values, y_values, color='red', label='Scatter 1')
-
-# Second dataset
-x_values2 = [1, 2, 3, 4, 5]
-y_values2 = [5, 3, 4, 2, 1]
-
-# Plot the second dataset as a line graph
-plt.plot(x_values2, y_values2, label='Line 2', linestyle='--', marker='s')
-
-# Add title and axis labels
-plt.title('My first plot')
-plt.xlabel('X Values')
-plt.ylabel('Y Values')
-plt.legend()
-plt.grid(True)
+plt.hist(trip_miles, bins=20)
+plt.xlabel("Trip Miles")
+plt.ylabel("Frequency")
+plt.title("Distribution of Trip Miles")
 plt.show()
+
+
