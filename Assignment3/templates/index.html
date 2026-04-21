@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block title %}Welcome | QuizGame{% endblock %}
+
+{% block extra_head %}
+<style>
+  .hero-label {
+    display: inline-block;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    margin-bottom: 1.2rem;
+  }
+
+  .hero h1 { margin-bottom: 1rem; }
+  .hero p  { margin-bottom: 2rem; font-size: 1.05rem; }
+
+  .name-form {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .name-input {
+    flex: 1;
+    min-width: 180px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .name-input:focus { border-color: var(--accent); }
+
+  .history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  .history-table th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    color: var(--muted);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  .history-table td {
+    padding: 0.55rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .history-table tr:last-child td { border-bottom: none; }
+
+  .score-pill {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+  .score-good { background: rgba(52,211,153,0.15); color: var(--correct); }
+  .score-mid  { background: rgba(0,212,255,0.1);  color: var(--accent); }
+  .score-low  { background: rgba(248,113,113,0.15); color: var(--incorrect); }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+
+  {% if username %}
+    <!-- Returning user -->
+    <div class="hero" style="margin-bottom: 2rem;">
+      <span class="hero-label">Welcome back</span>
+      <h1>Hey, {{ username }}! 👋</h1>
+      <p>Ready for another round? Your scores are tracked below.</p>
+      <a href="{{ url_for('start') }}" class="btn btn-primary">Start Quiz →</a>
+    </div>
+
+    {% if score_history %}
+    <div class="card">
+      <h2 style="margin-bottom:0.25rem;">Your History</h2>
+      <p style="margin-bottom:1rem; font-size:0.875rem;">Last {{ score_history|length }} session(s)</p>
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Score</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in score_history|reverse %}
+          <tr>
+            <td>{{ entry.date }}</td>
+            <td>{{ entry.score }} / {{ entry.total }}</td>
+            <td>
+              {% set pct = (entry.score / entry.total * 100)|int %}
+              {% if pct >= 80 %}
+                <span class="score-pill score-good">{{ pct }}%</span>
+              {% elif pct >= 50 %}
+                <span class="score-pill score-mid">{{ pct }}%</span>
+              {% else %}
+                <span class="score-pill score-low">{{ pct }}%</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="card" style="text-align:center; padding: 2rem;">
+      <p>No previous games yet — play your first round!</p>
+    </div>
+    {% endif %}
+
+  {% else %}
+    <!-- First-time visitor -->
+    <div class="hero card">
+      <span class="hero-label">Ocean Knowledge Challenge</span>
+      <h1>Welcome to<br/>QuizGame</h1>
+      <p>Test your knowledge of the ocean — fish, sea creatures, and the deep blue sea. Enter your name to get started and track your scores.</p>
+
+      {% if error %}
+        <div class="alert alert-error">{{ error }}</div>
+      {% endif %}
+
+      <form method="POST" action="{{ url_for('home') }}">
+        <div class="name-form">
+          <input
+            class="name-input"
+            type="text"
+            name="name"
+            placeholder="Your name..."
+            maxlength="40"
+            required
+          />
+          <button class="btn btn-primary" type="submit">Let's Go →</button>
+        </div>
+      </form>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

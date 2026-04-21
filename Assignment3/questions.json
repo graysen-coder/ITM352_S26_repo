@@ -1,0 +1,72 @@
+[
+  {
+    "question": "What is the largest fish in the ocean?",
+    "options": ["Great White Shark", "Whale Shark", "Giant Oarfish", "Bluefin Tuna"],
+    "correct_answer": "Whale Shark",
+    "explanation": "The whale shark is the largest fish in the ocean, reaching up to 40 feet long. Despite their massive size, they are gentle filter feeders that eat mostly plankton.",
+    "hint": "Despite its name, it's not actually a whale — but it is the biggest."
+  },
+  {
+    "question": "How many hearts does an octopus have?",
+    "options": ["1", "2", "3", "4"],
+    "correct_answer": "3",
+    "explanation": "Octopuses have three hearts: two branchial hearts pump blood through the gills, while the third systemic heart pumps it through the rest of the body.",
+    "hint": "More than you'd expect — one for each arm cluster, plus one more."
+  },
+  {
+    "question": "What gives clownfish their distinctive orange and white coloring?",
+    "options": ["Diet of coral", "Mucus layer from anemones", "Pigment cells called chromatophores", "Reflection of sunlight off scales"],
+    "correct_answer": "Pigment cells called chromatophores",
+    "explanation": "Clownfish get their bright orange and white colors from chromatophores — specialized pigment cells in their skin. Their mucus coating protects them from anemone stings, but isn't the source of color.",
+    "hint": "Think about what's inside the skin cells themselves."
+  },
+  {
+    "question": "Which fish is known for being able to walk on land using its fins?",
+    "options": ["Mudskipper", "Flying Fish", "Lungfish", "Archerfish"],
+    "correct_answer": "Mudskipper",
+    "explanation": "Mudskippers are amphibious fish that can use their strong pectoral fins to 'walk' on land. They can also breathe through their skin when it's moist, allowing them to survive out of water for extended periods.",
+    "hint": "Its name gives a clue about the muddy habitat it skips around in."
+  },
+  {
+    "question": "What is the term for a group of fish swimming together in a coordinated pattern?",
+    "options": ["Pod", "School", "Pack", "Colony"],
+    "correct_answer": "School",
+    "explanation": "A group of fish swimming in a coordinated pattern is called a school. When fish gather loosely without coordinated movement, they are called a shoal — though the two terms are often used interchangeably.",
+    "hint": "You attend one of these to learn things."
+  },
+  {
+    "question": "Which ocean contains the deepest known point on Earth?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "correct_answer": "Pacific Ocean",
+    "explanation": "The Pacific Ocean contains the Mariana Trench — the deepest known point on Earth at nearly 36,000 feet below the surface. The Pacific also covers more area than all of Earth's landmass combined.",
+    "hint": "It's also the largest ocean."
+  },
+  {
+    "question": "What is the fastest fish in the ocean?",
+    "options": ["Mako Shark", "Swordfish", "Sailfish", "Yellowfin Tuna"],
+    "correct_answer": "Sailfish",
+    "explanation": "The sailfish is considered the fastest fish in the ocean, capable of reaching speeds up to 68 mph. Its large dorsal fin can be folded down when swimming at high speed to reduce drag.",
+    "hint": "Its name comes from the large fin on its back."
+  },
+  {
+    "question": "How do fish breathe underwater?",
+    "options": ["They absorb oxygen through their scales", "They surface periodically to breathe air", "They extract dissolved oxygen from water using gills", "They store oxygen in a special organ before diving"],
+    "correct_answer": "They extract dissolved oxygen from water using gills",
+    "explanation": "Fish breathe by passing water over their gills, which extract dissolved oxygen from the water and release carbon dioxide back — the same gas exchange process as lungs, just adapted for water.",
+    "hint": "The organ responsible starts with a 'G'."
+  },
+  {
+    "question": "Which of these fish can produce electricity to stun prey?",
+    "options": ["Stonefish", "Electric Eel", "Stargazer", "Both Electric Eel and Stargazer"],
+    "correct_answer": "Both Electric Eel and Stargazer",
+    "explanation": "Both electric eels and stargazers can produce electric shocks. Electric eels can generate up to 600 volts, while stargazer fish produce electricity from modified eye muscles.",
+    "hint": "Think broader than just one — at least two fish on the list share this power."
+  },
+  {
+    "question": "What is the main diet of the blue whale?",
+    "options": ["Small fish", "Krill", "Squid", "Jellyfish"],
+    "correct_answer": "Krill",
+    "explanation": "Blue whales survive almost entirely on krill — tiny shrimp-like crustaceans. A blue whale can eat up to 4 tons of krill per day, filtering them from the water using baleen plates instead of teeth.",
+    "hint": "They're tiny crustaceans — ironic given the whale's size."
+  }
+]

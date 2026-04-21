@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Answer Feedback | QuizGame{% endblock %}
+
+{% block extra_head %}
+<style>
+  .feedback-card {
+    border-radius: var(--radius);
+    padding: 2rem 2.5rem;
+    border: 1px solid;
+    margin-bottom: 1.5rem;
+    animation: popIn 0.3s ease both;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .feedback-card.correct   { background: rgba(52,211,153,0.07);  border-color: var(--correct);   }
+  .feedback-card.incorrect { background: rgba(248,113,113,0.07); border-color: var(--incorrect); }
+
+  .feedback-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .feedback-title {
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+  }
+  .feedback-title.correct   { color: var(--correct); }
+  .feedback-title.incorrect { color: var(--incorrect); }
+
+  .answer-row {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .answer-row span { color: var(--text); font-weight: 600; }
+
+  .explanation-box {
+    margin-top: 1.2rem;
+    padding: 0.9rem 1.1rem;
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .progress-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+
+  <!-- Progress -->
+  <div class="progress-label">Question {{ index + 1 }} of {{ total }}</div>
+  <div class="progress-wrap" style="margin-bottom:1.5rem;">
+    <div class="progress-fill" style="width: {{ ((index + 1) * 100 // total) }}%;"></div>
+  </div>
+
+  {% if feedback.is_correct %}
+    <div class="feedback-card correct">
+      <div class="feedback-icon">✅</div>
+      <div class="feedback-title correct">Correct!</div>
+      <div class="answer-row">Your answer: <span>{{ feedback.selected }}</span></div>
+      <div class="explanation-box">{{ feedback.explanation }}</div>
+    </div>
+  {% else %}
+    <div class="feedback-card incorrect">
+      <div class="feedback-icon">❌</div>
+      <div class="feedback-title incorrect">Not quite!</div>
+      <div class="answer-row">Your answer: <span>{{ feedback.selected }}</span></div>
+      <div class="answer-row">Correct answer: <span>{{ feedback.correct_answer }}</span></div>
+      <div class="explanation-box">{{ feedback.explanation }}</div>
+    </div>
+  {% endif %}
+
+  {% if next_index >= total %}
+    <a href="{{ url_for('result') }}" class="btn btn-primary">See Final Results →</a>
+  {% else %}
+    <a href="{{ url_for('quiz') }}" class="btn btn-primary">Next Question →</a>
+  {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% block title %}Question {{ index + 1 }} | QuizGame{% endblock %}
+
+{% block extra_head %}
+<style>
+  .quiz-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .question-text {
+    font-family: var(--font-head);
+    font-size: 1.4rem;
+    line-height: 1.3;
+    margin-bottom: 1.8rem;
+    color: var(--text);
+  }
+
+  /* Radio option cards */
+  .options-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .option-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+  }
+  .option-label:hover { border-color: var(--accent); background: rgba(0,212,255,0.05); }
+
+  .option-label input[type="radio"] { display: none; }
+
+  .option-label.selected {
+    border-color: var(--accent);
+    background: rgba(0,212,255,0.06);
+  }
+
+  .option-key {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--border);
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+  }
+  .option-label.selected .option-key { background: var(--accent); color: #0d0f14; }
+
+  /* Hint box */
+  .hint-box {
+    margin-top: 1.2rem;
+    padding: 0.8rem 1.1rem;
+    background: rgba(0,212,255,0.06);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--accent);
+  }
+
+  /* Bottom action row */
+  .quiz-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.8rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .error-text { color: var(--incorrect); font-size: 0.875rem; margin-top: 0.5rem; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+
+  <!-- Progress bar (Requirement 8) -->
+  <div class="quiz-meta">
+    <span>Question {{ index + 1 }} of {{ total }}</span>
+    <span>{{ session.get('score', 0) }} correct so far</span>
+  </div>
+  <div class="progress-wrap" style="margin-bottom: 1.5rem;">
+    <div class="progress-fill" style="width: {{ (index / total * 100)|int }}%;"></div>
+  </div>
+
+  <div class="card">
+    <p class="question-text">{{ question.question }}</p>
+
+    <form method="POST" action="{{ url_for('quiz') }}" id="quiz-form">
+
+      <div class="options-grid" id="options">
+        {% set letters = ['A','B','C','D','E','F'] %}
+        {% for i, option in question.options|enumerate %}
+        <label class="option-label" id="label-{{ i }}">
+          <input type="radio" name="answer" value="{{ option }}" required />
+          <span class="option-key">{{ letters[i] }}</span>
+          <span>{{ option }}</span>
+        </label>
+        {% endfor %}
+      </div>
+
+      {% if error %}
+        <p class="error-text">⚠ {{ error }}</p>
+      {% endif %}
+
+      {% if show_hint and hint %}
+        <div class="hint-box">💡 <strong>Hint:</strong> {{ hint }}</div>
+      {% endif %}
+
+      <div class="quiz-actions">
+        <!-- Hint button (only if question has a hint) -->
+        {% if question.hint and not show_hint %}
+          <button type="submit" name="action" value="hint" class="btn btn-outline" style="font-size:0.875rem;">
+            💡 Use Hint
+          </button>
+        {% else %}
+          <span></span>
+        {% endif %}
+
+        <button type="submit" name="action" value="answer" class="btn btn-primary" id="submit-btn">
+          Submit Answer
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<script>
+  // Visually highlight selected option (converted from Assignment 1 input feedback)
+  document.querySelectorAll('.option-label').forEach(label => {
+    label.addEventListener('click', () => {
+      document.querySelectorAll('.option-label').forEach(l => l.classList.remove('selected'));
+      label.classList.add('selected');
+      label.querySelector('input').checked = true;
+    });
+  });
+</script>
+{% endblock %}

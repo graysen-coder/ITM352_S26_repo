@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}Results | QuizGame{% endblock %}
+
+{% block extra_head %}
+<style>
+  .score-hero {
+    text-align: center;
+    padding: 2.5rem 2rem;
+    margin-bottom: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+  }
+
+  .score-number {
+    font-family: var(--font-head);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  .score-sub { color: var(--muted); font-size: 1rem; margin-bottom: 1.5rem; }
+
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .stat { text-align: center; }
+  .stat-val { font-family: var(--font-head); font-size: 1.6rem; color: var(--text); }
+  .stat-lbl { font-size: 0.8rem; color: var(--muted); }
+
+  /* Review table */
+  .review-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem; }
+
+  .review-item {
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+  .review-item.ok  { border-left: 3px solid var(--correct); }
+  .review-item.bad { border-left: 3px solid var(--incorrect); }
+
+  .review-q { font-weight: 600; margin-bottom: 0.4rem; color: var(--text); }
+  .review-ans { color: var(--muted); font-size: 0.85rem; }
+  .review-ans span { color: var(--text); }
+
+  .review-exp {
+    margin-top: 0.5rem;
+    font-size: 0.82rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 0.5rem;
+  }
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="fade-in">
+
+  <!-- Score hero -->
+  <div class="score-hero">
+    <div class="score-number">{{ score }}/{{ total }}</div>
+    <div class="score-sub">
+      {% set pct = (score / total * 100)|int %}
+      {% if pct == 100 %}🏆 Perfect score!
+      {% elif pct >= 80 %}🎉 Great job, {{ username }}!
+      {% elif pct >= 50 %}👍 Not bad, keep practicing!
+      {% else %}📚 Keep studying — you'll get there!
+      {% endif %}
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-val" style="color:var(--correct);">{{ score }}</div>
+        <div class="stat-lbl">Correct</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val" style="color:var(--incorrect);">{{ total - score }}</div>
+        <div class="stat-lbl">Incorrect</div>
+      </div>
+      {% if time_taken %}
+      <div class="stat">
+        <div class="stat-val">{{ time_taken }}</div>
+        <div class="stat-lbl">Time taken</div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div style="display:flex; gap:0.75rem; justify-content:center; flex-wrap:wrap;">
+      <a href="{{ url_for('start') }}" class="btn btn-primary">Play Again</a>
+      <a href="{{ url_for('home') }}"  class="btn btn-secondary">Home</a>
+    </div>
+  </div>
+
+  <!-- Answer review (Requirement 9) -->
+  <div class="card">
+    <h2 style="margin-bottom:0.25rem;">Answer Review</h2>
+    <p style="font-size:0.875rem; margin-bottom:1rem;">
+      Go over the questions you missed with explanations.
+    </p>
+    <div class="review-list">
+      {% for a in answers %}
+      <div class="review-item {{ 'ok' if a.is_correct else 'bad' }}">
+        <div class="review-q">{{ loop.index }}. {{ a.question }}</div>
+        {% if a.is_correct %}
+          <div class="review-ans">✅ Your answer: <span>{{ a.selected }}</span></div>
+        {% else %}
+          <div class="review-ans">❌ Your answer: <span>{{ a.selected }}</span></div>
+          <div class="review-ans">✔ Correct: <span>{{ a.correct_answer }}</span></div>
+        {% endif %}
+        <div class="review-exp">{{ a.explanation }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
