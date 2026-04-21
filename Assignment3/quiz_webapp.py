@@ -1,7 +1,17 @@
-# quiz_webapp.py
-# Name: Graysen Oumi
-# Assignment 3 - Flask Quiz Web Application
-# Converted from Assignment 1 console quiz game to a Flask web app.
+#Assignment 3
+#Name: Graysen Oumi
+#Date: April 21, 2026
+
+#This is a Flask web app version of the quiz game from Assignment 1, converted from a console app to run in the browser
+
+#Extra requirements
+#1. Use cookies or sessions to check if a user has already visited the quiz game. If so, welcome them back and show them their score history. If it’s their first visit, ask them for their name and save it in a cookie/session which will be used to identify them in subsequent visits. Use sessions and cookies to track the user’s quiz score history.
+#8. Include a progress bar to visually represent quiz completion status. The bar should fill as the user answers each question.
+
+#I used Claude to help me convert the Assignment 1 console quiz into a Flask web app with the prompt
+#"Convert my Assignment 1 Python quiz game into a Flask web app that uses sessions to track state between requests and fulfills the following requirements"
+#I made sure I understood all the Flask routing and session logic before using it, I also edited all of the comments to explain
+#my understanding and also iterated on the original code because a bunch of it didn't make sense to me.
 
 import json
 import random
@@ -10,30 +20,22 @@ from flask import Flask, render_template, request, redirect, url_for, session
 
 app = Flask(__name__)
 
-# Custom Jinja2 filter: lets templates do `list|enumerate` just like Python's enumerate()
+#Need to add enumerate as a Jinja2 filter so the templates can use it the same way python does
 app.jinja_env.filters['enumerate'] = enumerate
 
-# Secret key required for session management (requirement 1: Persistent User Identification)
-# AI suggestion: use a strong random key in production; for dev a fixed string is fine
+#Flask requires a secret key to use sessions, this is what encrypts the session cookie
 app.secret_key = "quiz_secret_key_2026"
 
-# ---------------------------------------------------------------------------
-# Data loading helpers (converted from Assignment 1's file-reading logic)
-# ---------------------------------------------------------------------------
 
+#This loads all the questions from the JSON file and returns them as a list, same idea as reading from the txt file in Assignment 1
 def load_questions():
-    """Load questions from questions.json and return as a list of dicts.
-    Each dict has: question, options, correct_answer, explanation, hint (optional).
-    Generated with AI assistance for JSON loading pattern.
-    """
     with open("questions.json", "r") as f:
         return json.load(f)
 
 
+#This loads the score history from a JSON file so we can show returning users their past scores (requirement 1)
+#Returns an empty dict if the file doesnt exist yet so the first run doesnt crash
 def load_score_history():
-    """Load score history from score_history.json.
-    Carries over the requirement from Assignment 1 to persist score history.
-    """
     try:
         with open("score_history.json", "r") as f:
             return json.load(f)
@@ -41,21 +43,15 @@ def load_score_history():
         return {}
 
 
+#This saves the updated score history back to the file after every quiz (requirement 1)
 def save_score_history(history):
-    """Persist score history dict keyed by username."""
     with open("score_history.json", "w") as f:
         json.dump(history, f, indent=2)
 
 
-# ---------------------------------------------------------------------------
-# Quiz setup helpers (adapted from Assignment 1's quiz_question class logic)
-# ---------------------------------------------------------------------------
-
+#This shuffles the question order and randomizes the answer options for each question before a quiz starts
+#I wanted to keep the same randomization behavior from Assignment 1 but now it needs to live in the session so the order stays stable across page loads
 def prepare_quiz():
-    """Shuffle questions and randomize each question's option order.
-    Stores the prepared question list in the session so order is stable per session.
-    Satisfies requirement: Randomize both question order and answer options.
-    """
     questions = load_questions()
     random.shuffle(questions)
 
@@ -68,21 +64,15 @@ def prepare_quiz():
             "options": options,
             "correct_answer": q["correct_answer"],
             "explanation": q["explanation"],
-            "hint": q.get("hint"),  # hint is optional, same as Assignment 1
+            "hint": q.get("hint"),  
+            #hint is optional
         })
     return prepared
 
 
-# ---------------------------------------------------------------------------
-# Routes
-# ---------------------------------------------------------------------------
-
+#Home page route — checks if the user already has a session and greets them if so, otherwise asks for their name (requirement 1)
 @app.route("/", methods=["GET", "POST"])
 def home():
-    """Home / welcome page.
-    Requirement 1: Check cookie/session for returning user; greet them and show history.
-    If first visit, ask for their name and save it to the session.
-    """
     error = None
 
     if request.method == "POST":
@@ -103,44 +93,40 @@ def home():
     return render_template("index.html", username=username, score_history=score_history, error=error)
 
 
+#This route sets up a fresh quiz by loading and shuffling the questions and storing them in the session
+#I reset score and answer tracking here so replaying doesn't carry over the old results
 @app.route("/start")
 def start():
-    """Initialize a new quiz session and redirect to the first question.
-    Resets quiz-specific session data without clearing the username.
-    """
     questions = prepare_quiz()
     session["questions"] = questions
     session["current_index"] = 0
     session["score"] = 0
-    session["answers"] = []       # tracks per-question result for review screen
+    session["answers"] = []
     session["start_time"] = datetime.now().isoformat()
     return redirect(url_for("quiz"))
 
 
+#This is the main quiz route that handles showing questions and processing answers one at a time
+#GET shows the current question and POST handles the submitted answer, then redirects to a feedback page before moving on
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
-    """Quiz page — shows one question at a time.
-    GET: Display current question.
-    POST: Process submitted answer, store feedback, advance to next question or results.
-    Satisfies requirements: Question Display, Answer Submission & Feedback, Score Tracking.
-    """
     questions = session.get("questions")
     if not questions:
         return redirect(url_for("home"))
 
     index = session.get("current_index", 0)
 
-    # All questions answered — go to results
+    #If all questions have been answered, send the user to results
     if index >= len(questions):
         return redirect(url_for("result"))
 
     current_q = questions[index]
-    feedback = None  # shown after the user submits an answer
+    feedback = None
 
     if request.method == "POST":
         action = request.form.get("action")
 
-        # --- Hint request ---
+        #If the user asked for a hint, show the question again with the hint shown (requirement 6)
         if action == "hint":
             hint_text = current_q.get("hint", "No hint available.")
             return render_template(
@@ -152,7 +138,6 @@ def quiz():
                 show_hint=True,
             )
 
-        # --- Answer submission ---
         selected = request.form.get("answer")
         if not selected:
             return render_template(
@@ -168,7 +153,7 @@ def quiz():
         if is_correct:
             session["score"] = session.get("score", 0) + 1
 
-        # Store result for the end-of-quiz review screen (requirement 9)
+        #Store each answer result so we can show the full review at the end (requirement 9)
         answers = session.get("answers", [])
         answers.append({
             "question": current_q["question"],
@@ -188,6 +173,7 @@ def quiz():
             "explanation": current_q["explanation"],
         }
 
+        #Show the answer feedback page with the explanation before letting the user move on (requirement 7)
         return render_template(
             "question_result.html",
             feedback=feedback,
@@ -196,7 +182,6 @@ def quiz():
             next_index=index + 1,
         )
 
-    # GET — display the question
     return render_template(
         "quiz.html",
         question=current_q,
@@ -205,12 +190,10 @@ def quiz():
     )
 
 
+#Results page that shows the final score, how long it took, and a review of every question (requirements 7 and 9)
+#Also saves the score to the user's history so they can see it next time they visit (requirement 1)
 @app.route("/result")
 def result():
-    """Results page.
-    Displays final score, time taken, and review of all answers.
-    Saves score history for the user (Requirement 1 / Assignment 1 carryover).
-    """
     questions = session.get("questions")
     if not questions:
         return redirect(url_for("home"))
@@ -220,7 +203,7 @@ def result():
     answers = session.get("answers", [])
     username = session.get("username", "Anonymous")
 
-    # Calculate time taken
+    #Calculate how long the quiz took using the start time we saved at the beginning
     start_time_str = session.get("start_time")
     time_taken = None
     if start_time_str:
@@ -230,7 +213,7 @@ def result():
         seconds = int(delta.total_seconds() % 60)
         time_taken = f"{minutes}m {seconds}s"
 
-    # Persist score to user history (carries over Assignment 1 score history requirement)
+    #Append this quiz result to the user's score history and save it to the file
     all_history = load_score_history()
     user_history = all_history.get(username, [])
     user_history.append({
@@ -251,16 +234,12 @@ def result():
     )
 
 
+#Logout just clears the session so a different user can enter their name
 @app.route("/logout")
 def logout():
-    """Clear the session so a new user can enter their name."""
     session.clear()
     return redirect(url_for("home"))
 
-
-# ---------------------------------------------------------------------------
-# Entry point
-# ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
     app.run(debug=True)
